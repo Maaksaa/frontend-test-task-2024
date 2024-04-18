@@ -10,14 +10,14 @@ import { computed } from 'vue';
 
 const props = defineProps({
   doctor: Object,
-  specialisations: Array
+  specializations: Array
 });
 
 const fullName = computed(() => `${props.doctor.lastName} ${props.doctor.firstName} ${props.doctor.middleName}`);
 
 const specialisationNames = computed(() => {
   return props.doctor.specializationList.map(spec => {
-    const foundSpec = props.specialisations.find(s => s.id === spec.id);
+    const foundSpec = props.specializations.find(s => s.id == spec.id);
     return foundSpec ? foundSpec.name : 'Неизвестная специальность';
   });
 });

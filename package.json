@@ -4,12 +4,15 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "json-server": "json-server --watch src/data/db.json --port 3002",
+    "start": "concurrently \"npm run serve\" \"npm run json-server\""
   },
   "dependencies": {
+    "json-server": "^1.0.0-alpha.23",
     "vue": "^3.2.13"
   },
   "devDependencies": {
-    "@vue/cli-service": "~5.0.0"
+    "@vue/cli-service": "~5.0.0",
+    "concurrently": "^8.2.2"
   }
 }

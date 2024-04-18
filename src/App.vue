@@ -2,7 +2,7 @@
   <div class="container">
     <div class="filter-section">
       <specialisation-filter
-        :specialisations="specialisations"
+        :specializations="specializations"
         :doctors="doctors"
         @updateActiveSpecialisation="updateActiveSpecialisation"
       />
@@ -12,24 +12,30 @@
         v-for="doctor in filteredDoctors"
         :key="doctor.id"
         :doctor="doctor"
-        :specialisations="specialisations"
+        :specializations="specializations"
       />
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
+import { fetchspecializations, fetchDoctors } from './services/api';
 import DoctorCard from './components/DoctorCard.vue';
 import SpecialisationFilter from './components/SpecialisationFilter.vue';
-import specializationsData from '@/data/specialisations.json';
-import doctorsData from '@/data/doctors.json';
 
-const specialisations = ref(specializationsData);
 
-const doctors = ref(doctorsData);
-
+const specializations = ref([]);
+const doctors = ref([]);
 const activeSpecialisation = ref(null);
+
+
+
+onMounted(async () => {
+  specializations.value = await fetchspecializations() || [];
+  doctors.value = await fetchDoctors() || [];
+});
+
 
 const updateActiveSpecialisation = (specId) => {
   activeSpecialisation.value = specId;
@@ -38,7 +44,7 @@ const updateActiveSpecialisation = (specId) => {
 const filteredDoctors = computed(() => {
   if (activeSpecialisation.value === null) return doctors.value;
   return doctors.value.filter(doctor =>
-    doctor.specializationList.some(spec => spec.id === activeSpecialisation.value)
+    doctor.specializationList.some(spec => spec.id == activeSpecialisation.value)
   );
 });
 </script>

@@ -2,7 +2,7 @@
   <div class="specialisation-filter">
     <h3 class="specialisation-h3">Специальность врача</h3>
     <button
-      v-for="specialisation in specialisations"
+      v-for="specialisation in specializations"
       :key="specialisation.id"
       :class="{ active: specialisation.id === selectedSpecId }"
       :disabled="!isActive(specialisation.id)"
@@ -17,7 +17,7 @@
 import { defineProps, defineEmits, ref } from 'vue';
 
 const props = defineProps({
-  specialisations: Array,
+  specializations: Array,
   doctors: Array
 });
 
@@ -25,7 +25,7 @@ const emit = defineEmits(['updateActiveSpecialisation']);
 const selectedSpecId = ref(null);
 
 function isActive(specId) {
-  return props.doctors.some(doctor => doctor.specializationList.some(spec => spec.id === specId));
+  return props.doctors.some(doctor => doctor.specializationList.some(spec => spec.id == specId));
 }
 
 function selectSpecialisation(specId) {
