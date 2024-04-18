@@ -22,42 +22,12 @@
 import { ref, computed } from 'vue';
 import DoctorCard from './components/DoctorCard.vue';
 import SpecialisationFilter from './components/SpecialisationFilter.vue';
+import specializationsData from '@/data/specialisations.json';
+import doctorsData from '@/data/doctors.json';
 
-const specialisations = ref([
-  { id: 2, name: "Терапевт" },
-  { id: 1, name: "Психолог" },
-  { id: 4, name: "Стоматолог-хирург" },
-  { id: 3, name: "Стоматолог" },
-  { id: 9, name: "Педиатр" },
-  { id: 15, name: "Гастроэнтеролог" },
-  { id: 16, name: "Гинеколог" },
-  { id: 17, name: "Дерматолог" },
-  { id: 21, name: "Невролог" }
-]);
+const specialisations = ref(specializationsData);
 
-const doctors = ref([
-  {
-    id: 300425,
-    lastName: "Керимов",
-    firstName: "Орхан",
-    middleName: "Илхамович",
-    specializationList: [{ id: 4 }, { id: 2 }]
-  },
-  {
-    id: 300421,
-    lastName: "Прохоренкова",
-    firstName: "Елизавета",
-    middleName: "Алексеевна",
-    specializationList: [{ id: 1 }]
-  },
-  {
-    id: 300422,
-    lastName: "Воеводина",
-    firstName: "Марина",
-    middleName: "Алексеевна",
-    specializationList: [{ id: 9 }]
-  }
-]);
+const doctors = ref(doctorsData);
 
 const activeSpecialisation = ref(null);
 
