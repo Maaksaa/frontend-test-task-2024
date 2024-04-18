@@ -43,19 +43,19 @@ const filteredDoctors = computed(() => {
 });
 </script>
 
-<style>
+<style scoped>
 .container {
   display: flex;
   margin: 20px;
 }
 
 .filter-section {
-  flex-basis: 20%;
+  width: 250px;
   padding: 10px;
 }
 
 .doctors-section {
-  flex-basis: 80%;
+
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -63,9 +63,5 @@ const filteredDoctors = computed(() => {
   padding: 10px;
 }
 
-.doctor-card {
-  width: 300px; /* Ширина карточки */
-  margin: 10px; /* Отступ между карточками */
-  /* Прочие стили карточки */
-}
+
 </style>

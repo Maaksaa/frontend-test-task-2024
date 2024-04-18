@@ -1,7 +1,7 @@
 <template>
   <div class="doctor-card">
-    <h3>{{ fullName }}</h3>
-    <p>Специальности: {{ specialisationNames.join(', ') }}</p>
+    <h3 class="doctor-h3">{{ fullName }}</h3>
+    <p> {{ specialisationNames.join(', ') }}</p>
   </div>
 </template>
 
@@ -25,9 +25,17 @@ const specialisationNames = computed(() => {
 
 <style scoped>
 .doctor-card {
-  border: 1px solid #ccc;
+  border: 1px solid #ECECEC;
+  color: #0f5a5f;
   margin: 10px;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 20px;
+  border-radius: 18px;
+  width: 200px;
+  height: 250px;
+}
+.doctor-h3 {
+  font-weight: 700;
+  margin-top: 170px;
+  height: 40px;
 }
 </style>
