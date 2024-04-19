@@ -20,7 +20,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue';
-import { fetchspecializations, fetchDoctors } from './services/api';
+import { fetchSpecializations, fetchDoctors } from './services/api';
 import DoctorCard from './components/DoctorCard.vue';
 import SpecializationFilter from './components/SpecializationFilter.vue';
 
@@ -32,7 +32,7 @@ const activeSpecialization = ref(null);
 
 
 onMounted(async () => {
-  specializations.value = await fetchspecializations() || [];
+  specializations.value = await fetchSpecializations() || [];
   doctors.value = await fetchDoctors() || [];
 });
 

@@ -12,7 +12,10 @@
     "vue": "^3.2.13"
   },
   "devDependencies": {
+    "@vue/cli-plugin-typescript": "^5.0.8",
     "@vue/cli-service": "~5.0.0",
-    "concurrently": "^8.2.2"
+    "@vue/runtime-core": "^3.4.23",
+    "concurrently": "^8.2.2",
+    "typescript": "^5.4.5"
   }
 }
