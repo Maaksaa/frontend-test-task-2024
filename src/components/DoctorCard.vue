@@ -1,7 +1,7 @@
 <template>
   <div class="doctor-card">
     <h3 class="doctor-h3">{{ fullName }}</h3>
-    <p> {{ specialisationNames.join(', ') }}</p>
+    <p> {{ specializationNames.join(', ') }}</p>
   </div>
 </template>
 
@@ -15,7 +15,7 @@ const props = defineProps({
 
 const fullName = computed(() => `${props.doctor.lastName} ${props.doctor.firstName} ${props.doctor.middleName}`);
 
-const specialisationNames = computed(() => {
+const specializationNames = computed(() => {
   return props.doctor.specializationList.map(spec => {
     const foundSpec = props.specializations.find(s => s.id == spec.id);
     return foundSpec ? foundSpec.name : 'Неизвестная специальность';

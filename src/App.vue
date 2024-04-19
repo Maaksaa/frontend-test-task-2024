@@ -1,10 +1,10 @@
 <template>
   <div class="container">
     <div class="filter-section">
-      <specialisation-filter
+      <specialization-filter
         :specializations="specializations"
         :doctors="doctors"
-        @updateActiveSpecialisation="updateActiveSpecialisation"
+        @updateActiveSpecialization="updateActiveSpecialization"
       />
     </div>
     <div class="doctors-section">
@@ -22,12 +22,12 @@
 import { ref, computed, onMounted } from 'vue';
 import { fetchspecializations, fetchDoctors } from './services/api';
 import DoctorCard from './components/DoctorCard.vue';
-import SpecialisationFilter from './components/SpecialisationFilter.vue';
+import SpecializationFilter from './components/SpecializationFilter.vue';
 
 
 const specializations = ref([]);
 const doctors = ref([]);
-const activeSpecialisation = ref(null);
+const activeSpecialization = ref(null);
 
 
 
@@ -37,14 +37,14 @@ onMounted(async () => {
 });
 
 
-const updateActiveSpecialisation = (specId) => {
-  activeSpecialisation.value = specId;
+const updateActiveSpecialization = (specId) => {
+  activeSpecialization.value = specId;
 };
 
 const filteredDoctors = computed(() => {
-  if (activeSpecialisation.value === null) return doctors.value;
+  if (activeSpecialization.value === null) return doctors.value;
   return doctors.value.filter(doctor =>
-    doctor.specializationList.some(spec => spec.id == activeSpecialisation.value)
+    doctor.specializationList.some(spec => spec.id == activeSpecialization.value)
   );
 });
 </script>
