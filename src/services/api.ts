@@ -1,14 +1,4 @@
-interface Specialization{
-  id: number;
-  name: string;
-}
-
-interface Doctor {
-  id: number;
-  firstName: string;
-  lastName: string;
-  specializationList: Array<{ id: number }>;
-}
+import { Specialization, Doctor } from '@/types/types';
 
 const BASE_URL = 'http://localhost:3002';
 

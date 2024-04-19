@@ -13,22 +13,26 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue';
+<script lang="ts" setup>
+import { ref, defineProps, defineEmits } from 'vue';
+import { Specialization, Doctor } from '@/types/types';
 
-const props = defineProps({
-  specializations: Array,
-  doctors: Array
-});
-
-const emit = defineEmits(['updateActiveSpecialization']);
-const selectedSpecId = ref(null);
-
-function isActive(specId) {
-  return props.doctors.some(doctor => doctor.specializationList.some(spec => spec.id == specId));
+interface Props {
+  specializations: Specialization[];
+  doctors: Doctor[];
 }
 
-function selectSpecialization(specId) {
+const props = defineProps<Props>();
+const emit = defineEmits(['updateActiveSpecialization']);
+const selectedSpecId = ref<number | null>(null);
+
+function isActive(specId: number): boolean {
+  return props.doctors.some(doctor => 
+    doctor.specializationList.some(spec => spec.id == specId)
+  );
+}
+
+function selectSpecialization(specId: number): void {
   selectedSpecId.value = specId;
   emit('updateActiveSpecialization', specId);
 }

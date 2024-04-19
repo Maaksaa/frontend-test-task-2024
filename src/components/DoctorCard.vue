@@ -5,15 +5,21 @@
   </div>
 </template>
 
-<script setup>
-import { computed } from 'vue';
+<script lang="ts" setup>
+import { computed, defineProps } from 'vue';
+import { Doctor, Specialization } from '@/types/types';
 
-const props = defineProps({
-  doctor: Object,
-  specializations: Array
+
+const props = defineProps<{
+  doctor: Doctor;
+  specializations: Specialization[];
+}>();
+
+
+const fullName = computed(() => {
+  return `${props.doctor.lastName} ${props.doctor.firstName} ${props.doctor.middleName}`;
 });
 
-const fullName = computed(() => `${props.doctor.lastName} ${props.doctor.firstName} ${props.doctor.middleName}`);
 
 const specializationNames = computed(() => {
   return props.doctor.specializationList.map(spec => {

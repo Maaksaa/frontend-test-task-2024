@@ -18,18 +18,17 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { ref, computed, onMounted } from 'vue';
 import { fetchSpecializations, fetchDoctors } from './services/api';
+import { Specialization, Doctor } from '@/types/types';
 import DoctorCard from './components/DoctorCard.vue';
 import SpecializationFilter from './components/SpecializationFilter.vue';
 
 
-const specializations = ref([]);
-const doctors = ref([]);
-const activeSpecialization = ref(null);
-
-
+const specializations = ref<Specialization[]>([]);
+const doctors = ref<Doctor[]>([]);
+const activeSpecialization = ref<number | null>(null);
 
 onMounted(async () => {
   specializations.value = await fetchSpecializations() || [];
@@ -37,9 +36,10 @@ onMounted(async () => {
 });
 
 
-const updateActiveSpecialization = (specId) => {
+const updateActiveSpecialization = (specId: number) => {
   activeSpecialization.value = specId;
 };
+
 
 const filteredDoctors = computed(() => {
   if (activeSpecialization.value === null) return doctors.value;
